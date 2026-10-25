@@ -1,4 +1,4 @@
-name: tb_div_sub
+name: assig_q1_tb.v
 on: [push]
 jobs:
   simulate:
@@ -8,4 +8,4 @@ jobs:
       - name: Install Icarus Verilog
         run: sudo apt-get install -y iverilog
       - name: Run Testbench
-        run: iverilog -g2001 -o sim div_sub.v tb_div_sub.v && vvp -n sim
+        run: iverilog -g2001 -o sim assign_q1.v assign_q1_tb.v && vvp -n sim

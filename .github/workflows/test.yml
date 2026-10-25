@@ -1,11 +1,21 @@
 name: assig_q1_tb.v
+
 on: [push]
+
 jobs:
-  simulate:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Install Icarus Verilog
-        run: sudo apt-get install -y iverilog
-      - name: Run Testbench
-        run: iverilog -g2001 -o sim assign_q1.v assign_q1_tb.v && vvp -n sim
+simulate:
+runs-on: ubuntu-latest
+
+steps:
+  - uses: actions/checkout@v4
+
+  - name: Install Icarus Verilog
+    run: |
+      sudo apt-get update
+      sudo apt-get install -y iverilog
+
+  - name: Compile Verilog Files
+    run: iverilog -g2001 -o sim assign_01_q1/assig_q1.v assign_01_q1/assig_q1_tb.v
+
+  - name: Run Testbench
+    run: vvp sim
